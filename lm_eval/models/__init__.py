@@ -36,6 +36,7 @@ MODEL_MAPPING = {
     "hf-multimodal": "lm_eval.models.hf_vlms:HFMultimodalLM",
     "huggingface": "lm_eval.models.huggingface:HFLM",
     "ipex": "lm_eval.models.optimum_ipex:IPEXForCausalLM",
+    "llama-perplexity": "lm_eval.models.llama_perplexity:LlamaPerplexityLM",
     "local-chat-completions": "lm_eval.models.openai_completions:LocalChatCompletion",
     "local-completions": "lm_eval.models.openai_completions:LocalCompletionsAPI",
     "mamba_ssm": "lm_eval.models.mamba_lm:MambaLMWrapper",

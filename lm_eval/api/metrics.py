@@ -8,7 +8,10 @@ from collections.abc import Iterable
 from typing import Callable, List, Optional, Sequence, TypeVar
 
 import numpy as np
-import sacrebleu
+try:
+    import sacrebleu
+except ModuleNotFoundError:
+    sacrebleu = None
 
 from lm_eval.api.registry import register_aggregation, register_metric
 
@@ -92,6 +95,8 @@ def bleu(items):
 
     Higher is better
     """
+    if sacrebleu is None:
+        raise ModuleNotFoundError("sacrebleu is required to compute BLEU")
     refs = list(zip(*items))[0]
     preds = list(zip(*items))[1]
     refs, preds = _sacreformat(refs, preds)
@@ -107,6 +112,8 @@ def chrf(items):
 
     Higher is better  # TODO I think
     """
+    if sacrebleu is None:
+        raise ModuleNotFoundError("sacrebleu is required to compute chrF")
     refs = list(zip(*items))[0]
     preds = list(zip(*items))[1]
     refs, preds = _sacreformat(refs, preds)
@@ -123,6 +130,8 @@ def ter(items):
 
     Lower is better
     """
+    if sacrebleu is None:
+        raise ModuleNotFoundError("sacrebleu is required to compute TER")
     refs = list(zip(*items))[0]
     preds = list(zip(*items))[1]
     refs, preds = _sacreformat(refs, preds)

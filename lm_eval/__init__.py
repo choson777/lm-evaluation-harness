@@ -4,7 +4,10 @@ import os
 from importlib.util import find_spec
 
 
-__version__ = importlib.metadata.version("lm_eval")
+try:
+    __version__ = importlib.metadata.version("lm_eval")
+except importlib.metadata.PackageNotFoundError:
+    __version__ = "0+local"
 
 
 # Enable high-performance transfers

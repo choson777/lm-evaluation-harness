@@ -2,7 +2,10 @@ import hashlib
 import logging
 import os
 
-import dill
+try:
+    import dill
+except ModuleNotFoundError:
+    import pickle as dill
 
 
 eval_logger = logging.getLogger(__name__)

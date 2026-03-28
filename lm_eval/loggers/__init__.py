@@ -1,2 +1,6 @@
 from .evaluation_tracker import EvaluationTracker
-from .wandb_logger import WandbLogger
+
+try:
+    from .wandb_logger import WandbLogger
+except ModuleNotFoundError:
+    WandbLogger = None
